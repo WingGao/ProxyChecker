@@ -10,8 +10,8 @@ jQuery('tr').each(function (i, ele) {
         //console.log('"http://'+ $ele.children()[0].innerHTML+':'+$ele.children()[1].innerHTML+'",');
     }
 });
-var html = ''
+var html = '';
 list.forEach(function (l) {
     html += '"' + l + '",'
-})
+});
 $('body').html(html);

@@ -48,6 +48,8 @@ class MyThread(Thread):
             # os.kill(self.pipe.pid, signal.SIGTERM)
             if os.name == 'nt':
                 call('taskkill /F /T /PID ' + str(self.pipe.pid), stdout=PIPE, stderr=PIPE)
+            else:
+                raise Exception('Not support %s' % os.name)
         else:
             # print 'end'
             pass
