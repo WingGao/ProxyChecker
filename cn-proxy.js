@@ -12,6 +12,6 @@ jQuery('tr').each(function (i, ele) {
 });
 var html = '';
 list.forEach(function (l) {
-    html += '"' + l + '",'
+    html += l + "<br>"
 });
 $('body').html(html);
