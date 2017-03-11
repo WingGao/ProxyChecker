@@ -27,43 +27,6 @@ proxy_list = [
 ]
 
 
-def timeout(timeout):
-    def deco(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            res = [Exception('function [%s] timeout [%s seconds] exceeded!' % (func.__name__, timeout))]
-
-            def newFunc():
-                try:
-                    res[0] = func(*args, **kwargs)
-                except Exception, e:
-                    res[0] = e
-
-            t = Thread(target=newFunc)
-            t.daemon = True
-            try:
-                t.start()
-                t.join(timeout)
-            except Exception, je:
-                print 'error starting thread'
-                raise je
-            ret = res[0]
-            if isinstance(ret, BaseException):
-                raise ret
-            return ret
-
-        return wrapper
-
-    return deco
-
-
-@timeout(10)
-def check(p):
-    print '\nproxy ==> %s' % p
-    # os.system("curl -o test.pak http://dl.360safe.com/setup.exe --proxy %s" % p)
-    # subprocess.call("curl -o test.pak http://dl.360safe.com/setup.exe --proxy %s" % i, shell=True)
-
-
 class MyThread(Thread):
     def __init__(self, proxy, maxtime=10):
         self.proxy = proxy
@@ -100,10 +63,3 @@ def use_thread():
 
 if __name__ == '__main__':
     use_thread()
-    # for i in proxy_list[:3]:
-    #     # os.system("curl -o test.pak http://dl.360safe.com/setup.exe --proxy %s" % i)
-    #     # subprocess.call("curl -o test.pak http://dl.360safe.com/setup.exe --proxy %s" % i, shell=True)
-    #     try:
-    #         check(i)
-    #     except:
-    #         pass
