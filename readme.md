@@ -1,5 +1,11 @@
 # ProxyChecker
 
+### Features
+
+* check the proxy is alive
+* check the proxy's speed
+
+
 ### How to
 
 1. add proxies to `proxy.txt`
