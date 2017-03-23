@@ -4,7 +4,7 @@
 
 * check the proxy is alive
 * check the proxy's speed
-
+* support windows, linux, macOS
 
 ### How to
 
@@ -16,7 +16,6 @@
 ### TODO
 
 * sort the proxies
-* support macOS
 * ping
 * auto search proxies
 * maybe change the curl to another one

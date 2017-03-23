@@ -1,1 +1,3 @@
 peewee >= 2.8.2
+requests>=2.13.0
+colorama>=0.3.7
